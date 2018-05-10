@@ -1,0 +1,38 @@
+{
+  "name": "typed-styled-components",
+  "version": "0.0.0",
+  "description": "TypeScript + styled-components in a simple way",
+  "author": "Hyunje Jun <me@noraesae.net>",
+  "main": "./dist/bundle.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc && webpack",
+    "test": "echo no test yet"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utatti/typed-styled-components.git"
+  },
+  "keywords": [
+    "styled-components",
+    "typescript"
+  ],
+  "homepage": "https://github.com/utatti/typed-styled-components",
+  "bugs": {
+    "url": "https://github.com/utatti/typed-styled-components/issues"
+  },
+  "dependencies": {
+    "@types/node": "^10.0.6",
+    "styled-components": "^3.2.6"
+  },
+  "devDependencies": {
+    "@types/react": "^16.3.14",
+    "typescript": "^2.8.3",
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3"
+  },
+  "peerDependencies": {
+    "react": ">= 16.0.0 < 17.0.0"
+  },
+  "license": "MIT"
+}

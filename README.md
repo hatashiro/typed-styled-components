@@ -6,14 +6,16 @@ TypeScript + styled-components in a simple way
 
 There is already [styled-components-ts](https://github.com/jacob-ebey/styled-components-ts)
 for using styled-components with TypeScript. The difference is just how prop
-types are specified, so the choice is yours.
+types are specified, so the choice is yours. One major difference is that
+typed-styled-components has styled-components as its dependency and exports
+everything from it, so that you don't need to install both.
 
 ```typescript
 // styled-components-ts
 styledComponentsTS<Props>(styled.h1)
 
 // typed-styled-components
-tStyled<Props>().h1
+styled<Props>().h1
 ```
 
 To be honest, both of us becomes obsolte when TypeScript 2.9 is out, as it
@@ -22,12 +24,12 @@ future!
 
 - https://github.com/Microsoft/TypeScript/pull/23430
 
-## Usage
+## Quick usage
 
 ```typescript
-import tStyled from "typed-styled-components";
+import styled from "typed-styled-components";
 
-const Header = tStyled<{ mood?: string }>().h1`
+const Header = styled<{ mood?: string }>().h1`
   color: ${props => props.mood.includes("blue") ? "blue" : "black"}
 `;
 
@@ -36,6 +38,18 @@ render() {
     <Header mood="I'm feeling blue">hello</Header>
   );
 }
+```
+
+`styled()` from typed-styled-components is just the original `styled` from
+styled-components, only typed. Thus you can use it just like how `styled`
+works.
+
+```typescript
+// beware that it should be styled() instead of styled
+const StyledLink = styled()(Link)`
+  color: palevioletred;
+  font-weight: bold;
+`;
 ```
 
 ## Install
@@ -47,39 +61,27 @@ npm i --save typed-styled-components
 ## API
 
 ```typescript
-import tStyled, { TypedStyledInterface } from "typed-styled-components";
+import styled from "typed-styled-components";
 ```
 
 typed-styled-components also exports all the named exports from
-styled-components too.
+styled-components too, so it needn't be installed.
 
 ```typescript
 import { StyledInterface } from "typed-styled-components";
 ```
 
-### `tStyled()`
+### `styled<Props>()`
 
 It's a helper function similar to `styled` in styled-components, but with
 an ability to define an additional prop type.
 
-```typescript
-function tStyled<P, O = P>(): TypedStyledInterface<P, O>
-```
-
-### `type TypedStyledInterface<P, O>`
-
-A type returned by `tStyled()`.
+Example:
 
 ```typescript
-type TypedStyledInterface<P, O> = {
-  [K in keyof StyledInterface]: StyledInterface[K] extends ThemedStyledFunction<
-    infer P0,
-    infer T0,
-    infer O0
-  >
-    ? ThemedStyledFunction<P & P0, T0, O & O0>
-    : StyledInterface[K]
-};
+const Text = styled<{ foo: string }>().h1`
+  color: ${props => f(props.foo)}
+`;
 ```
 
 ## License
