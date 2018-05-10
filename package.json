@@ -1,6 +1,6 @@
 {
   "name": "typed-styled-components",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "TypeScript + styled-components in a simple way",
   "author": "Hyunje Jun <me@noraesae.net>",
   "main": "./dist/bundle.js",
