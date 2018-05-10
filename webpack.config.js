@@ -6,7 +6,14 @@ module.exports = {
   output: {
     path: resolve(__dirname, "dist"),
     filename: "bundle.js",
-    libraryTarget: "commonjs2"
+    libraryTarget: "umd"
   },
-  externals: ["react"]
+  externals: {
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "react",
+      root: "React"
+    }
+  }
 };
