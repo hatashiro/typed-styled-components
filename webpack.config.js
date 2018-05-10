@@ -5,9 +5,8 @@ module.exports = {
   entry: "./dist/index",
   output: {
     path: resolve(__dirname, "dist"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    libraryTarget: "commonjs2"
   },
-  externals: {
-    react: "react"
-  }
+  externals: ["react"]
 };
