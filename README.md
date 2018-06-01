@@ -2,6 +2,26 @@
 
 TypeScript + styled-components in a simple way
 
+## Do not use this!
+
+You neither need [styled-components-ts](https://github.com/jacob-ebey/styled-components-ts),
+because TypeScript 2.9 has been released and it adds support for type
+variables with template literals! It means you can achieve the same thing
+with plain styled-compoonents.
+
+```typescript
+const MyH1 = styled.h1<{ customProp: string }>`
+  color: ${prop => prop.customProp}
+`;
+```
+
+Please look into the following links for the detail.
+
+- Announcing TypeScript 2.9: [Type arguments for tagged template strings](https://blogs.msdn.microsoft.com/typescript/2018/05/31/announcing-typescript-2-9/#type-arguments-tagged-template-strings)
+- A pull request in styled-components: [styled-components/pull/#1777](https://github.com/styled-components/styled-components/pull/1777)
+
+---
+
 ## Why another?
 
 There is already [styled-components-ts](https://github.com/jacob-ebey/styled-components-ts)
